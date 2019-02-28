@@ -8,9 +8,9 @@
 public class Database_Item
 {
     // instance variables - replace the example below with your own
-    protected String[] listItem;
+    private String listItem[];
+    private Item item;
     
-
     /**
      * Constructor for objects of class Database_Item
      */
@@ -19,19 +19,24 @@ public class Database_Item
         // initialise instance variables
     }
     
-    public static void addItem()
+    public boolean addItem(Item item)
     {
-        
+        return true;
     }
     
-    public static void removeItem()
+    public boolean removeItem(Item item)
     {
-        
+        return true;
     }
     
-    public static void getItemDatabase()
+    public Item getItem()
     {
-        
+        return item;
+    }
+    
+    public String[] getItemDatabase()
+    {
+        return listItem;
     }
     /**
      * An example of a method - replace this comment with your own
