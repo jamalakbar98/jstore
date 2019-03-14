@@ -1,48 +1,72 @@
 
 /**
- * Write a description of class Database_Item here.
+ * <h1>Item.java</h1>
+ * <p>
+ * Class ini merupakan bagian Database Item dari JStore Application
+ * Class ini representasi dari sebuah Database Item yang terdapat pada JStore Application
+ * </p>
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Jamaludin Akbar)
+ * @version (1.0)
+ * @since (2019/03/04)
  */
 public class Database_Item
 {
-    // instance variables - replace the example below with your own
+    /**
+     * List array dari Item yang dibuat
+     */
     private String listItem[];
-    private Item item;
     
     /**
-     * Constructor for objects of class Database_Item
+     * Item dari object DatabaseItem yang telah dibuat
+     */
+    public static Item itemDB;
+    
+    /**
+     * Method DatabaseItem merupakan Constructor dari DatabaseItem Class
+     * Method ini dapat berisi nilai default dari variabel dalam DatabaseItem Class
      */
     public Database_Item()
     {
-        // initialise instance variables
+        
     }
     
-    public boolean addItem(Item item)
+    /**
+     * Method ini merupakan method untuk menambahkan Item baru ke Database
+     * @param item Item yang ingin dimasukan ke Database
+     * @return nilai boolean apakah berhasil atau tidak pada saat memasukan Item
+     */
+    public static boolean addItem(Item item)
     {
+        itemDB=item;
         return true;
     }
     
+    /**
+     * Method ini merupakan method yang menghapus Item dari Database
+     * @param item Item yang ingin dihapus dari database
+     * @return nilai boolean apakah berhasil atau tidak pada saat menghapus Item
+     */
     public boolean removeItem(Item item)
     {
         return true;
     }
     
-    public Item getItem()
+    /**
+     * Accessor Method untuk mengambil Item dari object DatabaseItem
+     * @return Item dari object DatabaseItem
+     */
+    public Item getItemDB()
     {
-        return item;
+        return itemDB;
     }
     
+    /**
+     * Accessor Method untuk mengambil List Array Item dari object DatabaseItem
+     * @return List Array Item dari object DatabaseItem
+     */
     public String[] getItemDatabase()
     {
         return listItem;
     }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    
 }

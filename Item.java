@@ -1,106 +1,194 @@
 
 /**
- * Write a description of class Item here.
- *
+ * <h1>Item.java</h1>
+ * <p>
+ * Class ini merupakan bagian item dari JStore Application
+ * Class ini representasi dari sebuah item yang terdapat pada JStore Application
+ * </p>
+ * 
  * @author (Jamaludin AKbar)
- * @version (21 Februari 2019)
+ * @version (1.0)
+ * @since (2019/03/04)
  */
 public class Item
 {
-    // instance variables - replace the example below with your own
+    /**
+     * ID dari Item yang dibuat
+     */
     private int id;
+    
+    /**
+     * Nama dari Item yang dibuat
+     */
     private String name;
+    
+    /**
+     * Jumlah stok Item yang dibuat
+     */
     private int stock;
+    
+    /**
+     * Harga Item yang dibuat
+     */
     private int price;
-    private String category;
+   
+    /**
+     * Supplier dari Item yang dibuat
+     */
     private Supplier supplier;
+    private ItemStatus status;
+    private ItemCategory category;
     
 
     /**
-     * Constructor for objects of class Item
+     * Method Item merupakan Constructor dari Item Class
+     * @param id        ID dari objek barang yang dibuat
+     * @param name      Nama barang yang dibuat
+     * @param stock     Stock barang yang dibuat
+     * @param price     Harga barang yang dibuat
+     * @param category  Kategori barang yang dibuat
+     * @param supplier  Supplier barang yang dibuat
      */
-    public Item(int id, String name, int stock, int price, String category, Supplier supplier)
+    public Item(int id, String name, int stock, ItemStatus status, int price, Supplier supplier, ItemCategory category)
     {
         this.id=id;
         this.name=name;
         this.stock=stock;
         this.price=price;
-        this.category=category;
         this.supplier=supplier;
+        this.category=category;
+        this.status=status;
     }
     
+    /**
+     * Accessor Method untuk mengambil nilai ID dari objek Item
+     * @return Nilai ID dari objek Item
+     */
     public int getId()
     {
         return id;
     }
     
+    /**
+     * Accessor Method untuk mengambil String nama dari objek Item
+     * @return String nama dari objek Item
+     */
     public String getName()
     {
         return name;
     }
     
+    /**
+    * Accessor Method untuk mengambil nilai Stock dari objek Item
+    * @return Nilai Stock dari objek Item
+    */
     public int getStock()
     {
         return stock;
     }
     
+    /**
+    * Accessor Method untuk mengambil nilai harga dari objek Item
+    * @return Nilai harga dari objek Item
+    */
     public int getPrice()
     {
         return price;
     }
     
-    public String getCategory()
+    /**
+     * Accessor Method untuk mengambil String kategori dari objek Item
+     * @return String kategori dari objek Item
+     */
+    public ItemCategory getCategory()
     {
         return category;
     }
     
+    public ItemStatus getStatus()
+    {
+        return status;
+    }
+    
+    /**
+     * Accessor Method untuk mengambil Supplier dari objek Item
+     * @return Supplier dari objek Item
+     */
     public Supplier getSupplier()
     {
         return supplier;
     }
     
+    /**
+    * Mutator Method untuk mengubah ID dari objek Item
+    * @param id Nilai ID yang diinginkan
+    */
     public void setId(int id)
     {
         this.id=id;
     }
     
+    /**
+    * Mutator Method untuk mengubah Name dari objek Item
+    * @param name String Name yang diinginkan
+    */
     public void setName(String name)
     {
        this.name=name;
     }
     
+    /**
+    * Mutator Method untuk mengubah Stock dari objek Item
+    * @param stock Nilai Stock yang diinginkan
+    */
     public void setStock(int stock)
     {
         this.stock=stock;
     }
     
+    /**
+    * Mutator Method untuk mengubah Price dari objek Item
+    * @param price Nilai Price yang diinginkan
+    */
     public void setPrice(int price)
     {
         this.price=price;
     }
     
-    public void setCategory(String category)
+    /**
+    * Mutator Method untuk mengubah Category dari objek Item
+    * @param category String Category yang diinginkan
+    */
+    public void setCategory(ItemCategory category)
     {
         this.category=category;
     }
     
+    public void setStatus(ItemStatus status)
+    {
+        this.status=status;
+    }
+    
+    /**
+    * Mutator Method untuk mengubah Supplier dari objek Item
+    * @param supplier Supplier yang diinginkan
+    */
     public void setSupplier(Supplier supplier)
     {
         this.supplier=supplier;
     }
     
+    /**
+    * Method untuk melakukan Print Data dari Object Item (name)
+    */
     public void printData()
     {
-        System.out.println(name);
+        System.out.println("==========ITEM==========");
+        System.out.println("ID: "+ id);
+        System.out.println("Name: "+ name);
+        System.out.println("Stock: "+ stock);
+        System.out.println("Category: "+ category);
+        System.out.println("Status: "+ status);
+        System.out.println("Supplier: "+ supplier.getName());
     }
 }
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    
-        // put your code here
-    
