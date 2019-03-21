@@ -30,9 +30,10 @@ public class Invoice
     /**
      * Total harga dari objek invoice
      */
-    private int totalPrice;
+    protected int totalPrice;
     private int totalItem;
     private InvoiceStatus status;
+    private InvoiceType type;
 
     /**
      * Method Invoice merupakan Constructor dari Class Invoice
@@ -41,13 +42,13 @@ public class Invoice
      * @param date          Tanggal dari objek invoice
      * @param totalPrice    Total Harga dari objek invoice
      */
-    public Invoice(int id, Item item, String date, int totalPrice, InvoiceStatus status)
+    public Invoice(int id, Item item, String date, int totalItem, int totalPrice)
     {
        this.id=id;
        this.item=item;
        this.date=date;
+       this.totalItem=totalItem;
        this.totalPrice=totalPrice;
-       this.status=status;
     }
     
     /**
@@ -96,6 +97,11 @@ public class Invoice
         return status;
     }
     
+    public InvoiceType getInvoiceType()
+    {
+        return type;
+    }
+    
     /**
     * Mutator Method untuk mengubah ID dari objek Invoice
     * @param id Nilai ID yang diinginkan
@@ -109,7 +115,7 @@ public class Invoice
     * Mutator Method untuk mengubah Item dari objek Invoice
     * @param item Item yang diinginkan
     */
-    public void setIdItem(Item item)
+    public void setItem(Item item)
     {
         this.item=item;
     }
@@ -147,11 +153,6 @@ public class Invoice
     */
     public void printData()
     {
-        System.out.println("==========INVOICE=======");
-        System.out.println("ID :" + id);
-        System.out.println("Date :" + date);
-        System.out.println("Item yang terdapat :" + item.getName());
-        System.out.println("Total harga :" + totalPrice);
-        System.out.println("Status :" + status);
+        
     }
 }

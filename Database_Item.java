@@ -56,7 +56,7 @@ public class Database_Item
      * Accessor Method untuk mengambil Item dari object DatabaseItem
      * @return Item dari object DatabaseItem
      */
-    public Item getItemDB()
+    public static Item getItem()
     {
         return itemDB;
     }

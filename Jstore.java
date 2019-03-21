@@ -9,17 +9,21 @@
 public class Jstore
 {
     public static void main(String[] args){
-        //
-        Location location1 = new Location("Depok", "Jawa Barat", "Kota Belimbing");
-        Supplier supplier1 = new Supplier(1, "Samsung", "samsung@gmail.com", "012345", location1);
-        location1.printData();
-        supplier1.printData();
-        Transaction.orderNewItem(supplier1);
-        Transaction.orderSecondItem(supplier1);
-        Transaction.orderRefurbishedItem(supplier1);
-        Transaction.sellItemPaid(Database_Item.itemDB);
-        Transaction.sellItemUnpaid(Database_Item.itemDB);
-        Transaction.sellItemInstallment(Database_Item.itemDB);
+        ItemStatus status = ItemStatus.New;
+        ItemCategory kategori = ItemCategory.Electronics;
+        Location lokasi = new Location("Depok", "Jawa Barat", "Samping tukang sepatu");
+        Supplier baru = new Supplier(1, "Jamal", "jamaludin@gmail.com", "081122334455", lokasi);
+        lokasi.printData();
+        baru.printData();
+        Item barang = new Item(1,"Komputer",1,status,1500000,baru, kategori);
+        Database_Item.addItem(barang);
+        Transaction.orderNewItem(Database_Item.getItem());
+        Transaction.orderSecondItem(Database_Item.getItem());
+        Transaction.orderRefurbishedItem(Database_Item.getItem());
+        Transaction.sellItemPaid(Database_Item.getItem());
+        Transaction.sellItemUnpaid(Database_Item.getItem());
+        Transaction.sellItemInstallment(Database_Item.getItem());
+
     }
     
     public void JStore(){
