@@ -16,7 +16,7 @@ public class DatabaseSupplier
     /**
      * List Array dari supplier yang dibuat.
      */
-    private String listSupplier[];
+    private Supplier[] listSupplier;
     
     /**
      * Supplier dari Object DatabaseSupplier yang telah dibuat.
@@ -65,7 +65,7 @@ public class DatabaseSupplier
      * Accessor Method untuk mengambil List Array Supplier dari object DatabaseSupplier
      * @return List Array Supplier dari object DatabaseSupplier
      */
-    public String[] getListSupplier()
+    public Supplier[] getListSupplier()
     {
     	return listSupplier;
     }

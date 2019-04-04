@@ -15,7 +15,7 @@ public class Database_Item
     /**
      * List array dari Item yang dibuat
      */
-    private String listItem[];
+    private Item[] listItem;
     
     /**
      * Item dari object DatabaseItem yang telah dibuat
@@ -65,7 +65,7 @@ public class Database_Item
      * Accessor Method untuk mengambil List Array Item dari object DatabaseItem
      * @return List Array Item dari object DatabaseItem
      */
-    public String[] getItemDatabase()
+    public Item[] getItemDatabase()
     {
         return listItem;
     }

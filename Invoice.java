@@ -10,6 +10,7 @@
  * @version (1.0)
  * @since (2019/03/04)
  */
+import java.util.*;
 public class Invoice
 {
     /**
@@ -25,7 +26,7 @@ public class Invoice
     /**
      * Tanggal dari objek invoice
      */
-    private String date;
+    private Calendar date=Calendar.getInstance();
     
     /**
      * Total harga dari objek invoice
@@ -42,13 +43,12 @@ public class Invoice
      * @param date          Tanggal dari objek invoice
      * @param totalPrice    Total Harga dari objek invoice
      */
-    public Invoice(int id, Item item, String date, int totalItem, int totalPrice)
+    public Invoice(int id, Item item, int totalItem)
     {
        this.id=id;
        this.item=item;
-       this.date=date;
        this.totalItem=totalItem;
-       this.totalPrice=totalPrice;
+       setTotalPrice(totalItem*item.getPrice());
     }
     
     /**
@@ -73,7 +73,7 @@ public class Invoice
     * Accessor Method untuk mengambil String Date dari objek Invoice
     * @return String Date dari objek Invoice
     */
-    public String getDate()
+    public Calendar getDate()
     {
         return date;
     }
@@ -124,7 +124,7 @@ public class Invoice
     * Mutator Method untuk mengubah Date dari objek Invoice
     * @param date String Date yang diinginkan
     */
-    public void setDate(String date)
+    public void setDate(Calendar date)
     {
         this.date=date;
     }
@@ -151,8 +151,8 @@ public class Invoice
     /**
     * Method untuk melakukan Print Data dari Object Invoice (totalPrice)
     */
-    public void printData()
+    public String toString()
     {
-        
+        return "";
     }
 }

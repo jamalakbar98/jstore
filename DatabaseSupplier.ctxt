@@ -14,6 +14,6 @@ comment4.params=
 comment4.target=Supplier\ getSupplier()
 comment4.text=\r\n\ Accessor\ Method\ untuk\ mengambil\ Supplier\ dari\ object\ DatabaseSupplier\r\n\ @return\ Supplier\ dari\ object\ DatabaseSupplier\r\n
 comment5.params=
-comment5.target=java.lang.String[]\ getListSupplier()
+comment5.target=Supplier[]\ getListSupplier()
 comment5.text=\r\n\ Accessor\ Method\ untuk\ mengambil\ List\ Array\ Supplier\ dari\ object\ DatabaseSupplier\r\n\ @return\ List\ Array\ Supplier\ dari\ object\ DatabaseSupplier\r\n
 numComments=6

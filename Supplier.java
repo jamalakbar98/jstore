@@ -146,13 +146,7 @@ public class Supplier
     /**
     * Method untuk melakukan Print Data dari Object Supplier (name)
     */
-    public void printData()
-    {
-        System.out.println("===SUPPLIER===");
-        System.out.println("ID:" + id);
-        System.out.println("Name:" + getName());
-        System.out.println("Email:" + email);
-        System.out.println("Phone Number:" + phoneNumber);
-        System.out.println("Location:" + location.getCity());
+    public String toString(){
+        return "========SUPPLIER=========\nID: "+id+"nama: "+"\nnama: "+name+"\nemail: "+email+"\nnomor telepon: "+phoneNumber+"\nlokasi: "+location.getCity()+", "+location.getProvince();
     }
 }

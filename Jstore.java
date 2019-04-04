@@ -13,8 +13,8 @@ public class Jstore
         ItemCategory kategori = ItemCategory.Electronics;
         Location lokasi = new Location("Depok", "Jawa Barat", "Samping tukang sepatu");
         Supplier baru = new Supplier(1, "Jamal", "jamaludin@gmail.com", "081122334455", lokasi);
-        lokasi.printData();
-        baru.printData();
+        //lokasi.printData();
+        //baru.printData();
         Item barang = new Item(1,"Komputer",1,status,1500000,baru, kategori);
         Database_Item.addItem(barang);
         Transaction.orderNewItem(Database_Item.getItem());

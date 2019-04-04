@@ -1,4 +1,3 @@
-
 /**
  * <h1>Location.java</h1>
  * <p>
@@ -97,8 +96,7 @@ public class Location
     /**
     * Method untuk melakukan Print Data dari Object Location (province)
     */
-    public void printData()
-    {
-        System.out.println(province);
+    public String toString(){
+        return "========LOCATION========\nprovinsi:"+province+"\nkota:"+city+"\ndeskripsi:"+description;
     }
 }

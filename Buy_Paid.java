@@ -10,9 +10,9 @@ public class Buy_Paid extends Invoice
     private static final InvoiceType INVOICE_TYPE = InvoiceType.Buy;
     private static final InvoiceStatus INVOICE_STATUS = InvoiceStatus.Paid;
     
-    public Buy_Paid(int id, Item item, String date, int totalItem, int totalPrice)
+    public Buy_Paid(int id, Item item, int totalItem)
     {
-       super(id, item, date, totalItem, totalPrice);        
+       super(id, item, totalItem);        
     }
     
     public InvoiceStatus getInvoiceStatus()
@@ -25,15 +25,13 @@ public class Buy_Paid extends Invoice
         return INVOICE_TYPE;
     }
     
-    public void printData()
+    public String toString()
     {
-        System.out.println("==========INVOICE=======");
-        System.out.println("ID :" + getId());
-        System.out.println("Date :" + getDate());
-        System.out.println("Item yang terdapat :" + getItem().getName());
-        System.out.println("Total harga :" + totalPrice);
-        System.out.println("Status :" + getInvoiceStatus());
-        
+         return "===== Invoice =====" + "ID: " + this.getId() + "Item: " + this.getItem().getName() + "Amount:"
+                + this.getTotalItem() + "Buy Date: " + this.getDate() + "Price: " + this.getItem().getPrice()
+                + "Price total: " + this.getTotalPrice() + "Supplier ID: " + this.getItem().getSupplier().getId()
+                + "Supplier name: " + this.getItem().getSupplier().getName() + "status: " + this.INVOICE_STATUS
+                + "Buy success";
     }
     
 }
