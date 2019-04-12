@@ -49,9 +49,9 @@ public class Item
      * @param category  Kategori barang yang dibuat
      * @param supplier  Supplier barang yang dibuat
      */
-    public Item(int id, String name, int stock, ItemStatus status, int price, Supplier supplier, ItemCategory category)
+    public Item(String name, int stock, ItemStatus status, int price, Supplier supplier, ItemCategory category)
     {
-        this.id=id;
+        id=Database_Item.getLastItemID()+1;
         this.name=name;
         this.stock=stock;
         this.price=price;

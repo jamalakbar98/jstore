@@ -8,25 +8,20 @@
  */
 public class Jstore
 {
-    public static void main(String[] args){
-        ItemStatus status = ItemStatus.New;
-        ItemCategory kategori = ItemCategory.Electronics;
-        Location lokasi = new Location("Depok", "Jawa Barat", "Samping tukang sepatu");
-        Supplier baru = new Supplier(1, "Jamal", "jamaludin@gmail.com", "081122334455", lokasi);
-        //lokasi.printData();
-        //baru.printData();
-        Item barang = new Item(1,"Komputer",1,status,1500000,baru, kategori);
-        Database_Item.addItem(barang);
-        Transaction.orderNewItem(Database_Item.getItem());
-        Transaction.orderSecondItem(Database_Item.getItem());
-        Transaction.orderRefurbishedItem(Database_Item.getItem());
-        Transaction.sellItemPaid(Database_Item.getItem());
-        Transaction.sellItemUnpaid(Database_Item.getItem());
-        Transaction.sellItemInstallment(Database_Item.getItem());
-
+    public Jstore()
+    {
+        
     }
-    
-    public void JStore(){
-        //
+
+    public static void main(String[] args)
+    {
+        /*Location lokasi = new Location("Jakarta Timur","DKI Jakarta","Condet");
+        Supplier penyuplai = new Supplier(1, "Fadel", "fadel@gmail.com", "0211234", lokasi);
+        Item barang = new Item(1, "ROG Strix RTX2080 Ti", 100, 15000000, ItemCategory.Electronics, ItemStatus.New, penyuplai);
+        DatabaseItem.addItem(barang);
+        Transaction.orderNewItem(barang);
+        Transaction.sellItemPaid(barang);
+        Transaction.sellItemUnpaid(barang);
+        Transaction.sellItemInstallment(barang);*/
     }
 }

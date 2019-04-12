@@ -5,14 +5,17 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.util.*;
 public class Buy_Paid extends Invoice
 {
-    private static final InvoiceType INVOICE_TYPE = InvoiceType.Buy;
-    private static final InvoiceStatus INVOICE_STATUS = InvoiceStatus.Paid;
+    static final private InvoiceType INVOICE_TYPE = InvoiceType.Buy;
+    static final private InvoiceStatus INVOICE_STATUS = InvoiceStatus.Paid;
+    private boolean isActive;
     
-    public Buy_Paid(int id, Item item, int totalItem)
+    public Buy_Paid(ArrayList<Integer> item)
     {
-       super(id, item, totalItem);        
+       super(item);
+       isActive = false;
     }
     
     public InvoiceStatus getInvoiceStatus()
@@ -25,13 +28,28 @@ public class Buy_Paid extends Invoice
         return INVOICE_TYPE;
     }
     
+    public void setInvoiceStatus(InvoiceStatus status)
+    {
+    }
+    
     public String toString()
     {
-         return "===== Invoice =====" + "ID: " + this.getId() + "Item: " + this.getItem().getName() + "Amount:"
-                + this.getTotalItem() + "Buy Date: " + this.getDate() + "Price: " + this.getItem().getPrice()
-                + "Price total: " + this.getTotalPrice() + "Supplier ID: " + this.getItem().getSupplier().getId()
-                + "Supplier name: " + this.getItem().getSupplier().getName() + "status: " + this.INVOICE_STATUS
-                + "Buy success";
+        String string="==========INVOICE=======";
+        string += "\nID ="+getId();
+        string += "\nBuy date =" + getDate();
+        for (Integer invoice : getItem())
+        {
+            Item item = Database_Item.getItemFromID(invoice.intValue());
+            string += "\nItem: " + item.getName();
+            string += "\nAmount: " + getItem().size();
+            string += "\nPrice: " + item.getPrice();
+            string += "\nSupplier ID: " + item.getSupplier().getId();
+            string += "\nSupplier Name: " + item.getSupplier().getName();
+        }
+        string += "\nPrice Total: " + getTotalPrice();
+        string += "\nStatus: " + INVOICE_STATUS;
+        string += "\nBuy Success";
+        return string;
     }
     
 }

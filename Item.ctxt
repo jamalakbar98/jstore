@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Item
 comment0.text=\r\n\ <h1>Item.java</h1>\r\n\ <p>\r\n\ Class\ ini\ merupakan\ bagian\ item\ dari\ JStore\ Application\r\n\ Class\ ini\ representasi\ dari\ sebuah\ item\ yang\ terdapat\ pada\ JStore\ Application\r\n\ </p>\r\n\ \r\n\ @author\ (Jamaludin\ AKbar)\r\n\ @version\ (1.0)\r\n\ @since\ (2019/03/04)\r\n
-comment1.params=id\ name\ stock\ status\ price\ supplier\ category
-comment1.target=Item(int,\ java.lang.String,\ int,\ ItemStatus,\ int,\ Supplier,\ ItemCategory)
+comment1.params=name\ stock\ status\ price\ supplier\ category
+comment1.target=Item(java.lang.String,\ int,\ ItemStatus,\ int,\ Supplier,\ ItemCategory)
 comment1.text=\r\n\ Method\ Item\ merupakan\ Constructor\ dari\ Item\ Class\r\n\ @param\ id\ \ \ \ \ \ \ \ ID\ dari\ objek\ barang\ yang\ dibuat\r\n\ @param\ name\ \ \ \ \ \ Nama\ barang\ yang\ dibuat\r\n\ @param\ stock\ \ \ \ \ Stock\ barang\ yang\ dibuat\r\n\ @param\ price\ \ \ \ \ Harga\ barang\ yang\ dibuat\r\n\ @param\ category\ \ Kategori\ barang\ yang\ dibuat\r\n\ @param\ supplier\ \ Supplier\ barang\ yang\ dibuat\r\n
 comment10.params=name
 comment10.target=void\ setName(java.lang.String)

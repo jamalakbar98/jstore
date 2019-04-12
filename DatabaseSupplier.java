@@ -11,62 +11,78 @@
  * @version (1.0)
  * @since (2019/03/04)
  */
-public class DatabaseSupplier
-{
-    /**
-     * List Array dari supplier yang dibuat.
-     */
-    private Supplier[] listSupplier;
+import java.util.*;
+public class DatabaseSupplier{
     
     /**
-     * Supplier dari Object DatabaseSupplier yang telah dibuat.
-     */
-    private Supplier supplier;
-
+    * List Array dari Supplier yang dibuat
+    */
+   
+    private static ArrayList<Supplier> SUPPLIER_DATABASE = new ArrayList<Supplier>();
+    private static int LAST_SUPPLIER_ID=0;
+   
+    
     /**
-     * Method DatabaseSupplier merupakan Constructor dari Class DatabaseSupplier
-     * Method ini bisa berisi nilai default dari variabel Class DatabaseSupplier
-     */
-    public DatabaseSupplier()
+    * Method DatabaseSupplier merupakan Constructor dari DatabaseSupplier Class
+    * Method ini dapat berisi nilai default dari variabel dalam DatabaseSupplier Class
+    */
+    public static ArrayList<Supplier> getSupplierDatabase()
     {
-        
-    }
-
-    /**
-     * Method ini merupakan method yang menambahkan supplier baru kedalam DataseSupplier
-     * @param supplier Supplier yang ingin dimasukan ke Database
-     * @return nilai boolean apakah berhasil atau tidak pada saat memasukan supplier
-     */
-    public boolean addSupplier(Supplier supplier)
-    {
-        return true;
+        return SUPPLIER_DATABASE;
     }
     
     /**
-     * Method ini merupakan method yang menghapus Supplier dari Database
-     * @param supplier Supplier yang ingin dihapus dari database
-     * @return nilai boolean apakah berhasil atau tidak pada saat menghapus supplier
-     */
-    public boolean removeSupplier(Supplier supplier)
+    * Method ini merupakan method yang menambahkan Supplier baru
+    * Kedalam Database Supplier
+    * @param supplier Supplier yang ingin dimasukan kedalam database
+    * @return nilai boolean apakah pemasukan supplier berhasil atau gagal
+    */
+    
+    public static int getLastSupplierID()
     {
-        return true;
+        return LAST_SUPPLIER_ID;
     }
     
-    /**
-     * Accessor Method untuk mengambil Supplier dari object DatabaseSupplier
-     * @return Supplier dari object DatabaseSupplier
-     */
-    public Supplier getSupplier()
+    public static boolean addSupplier(Supplier supplier)
     {
-        return supplier;
+        boolean value=false;
+        for(Supplier supplierDB : SUPPLIER_DATABASE)
+        {
+            if(supplier.getName()!=supplierDB.getName()&&supplier.getEmail()!=supplierDB.getEmail()&&supplier.getPhoneNumber()!=supplierDB.getPhoneNumber())
+            {
+            SUPPLIER_DATABASE.add(supplier);
+            LAST_SUPPLIER_ID=supplier.getId();
+            value=true;
+            }
+        }
+        return value;
     }
     
-    /**
-     * Accessor Method untuk mengambil List Array Supplier dari object DatabaseSupplier
-     * @return List Array Supplier dari object DatabaseSupplier
-     */
-    public Supplier[] getListSupplier()
+    public Supplier getSupplier(int id)
     {
-    	return listSupplier;
+        Supplier value=null;
+        for(Supplier supplierDB : SUPPLIER_DATABASE)
+        {
+            if(supplierDB.getId()==id)
+            {
+                value=supplierDB;
+            }
+        }
+        return value;
     }
+    
+    public boolean removeSupplier(int id)
+    {
+        boolean value=false;
+        for(Supplier supplierDB : SUPPLIER_DATABASE)
+        {
+            if(supplierDB.getId()==id)
+            {
+                Database_Item.getItemDatabase().removeAll(Database_Item.getItemFromSupplier(supplierDB));
+                SUPPLIER_DATABASE.remove(id);
+                value=true;
+            }
+        }
+        return value;
+    }   
 }

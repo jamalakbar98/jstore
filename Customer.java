@@ -21,13 +21,13 @@ public class Customer
     /**
      * Constructor for objects of class Customer
      */
-    public Customer(String name, String email, String username, String password, int id, Calendar birthDate)
+    public Customer(String name, String email, String username, String password, Calendar birthDate)
     {
         this.name=name;
         this.email=email;
         this.username=username;
         this.password=password;
-        this.id=id;
+        id=DatabaseCustomer.getLastCustomer()+1;
         this.birthDate=birthDate;
     }
 
@@ -43,7 +43,7 @@ public class Customer
         this.email=email;
         this.username=username;
         this.password=password;
-        this.id=id;
+        id=DatabaseCustomer.getLastCustomer()+1;
         this.birthDate=new GregorianCalendar(year,month-1, dayOfMonth);
     }
     
@@ -135,10 +135,15 @@ public class Customer
     
     public void setBirthDate(int year, int month, int dayOfMonth)
     {
-       this.birthDate=new GregorianCalendar(year,month, dayOfMonth);
+       this.birthDate=new GregorianCalendar(year,month-1, dayOfMonth);
     }
     
     public String toString(){
-        return "===Customer===\nId: "+id+"\nNama: "+name+"\nUsername: "+username+"\nEmail: "+email+"\nPassword: "+password;
+        return "===Customer==="+
+        "\nId: "+id+
+        "\nNama: "+name+
+        "\nUsername: "+username+
+        "\nEmail: "+email+
+        "\nPassword: "+password;
     }
 }
