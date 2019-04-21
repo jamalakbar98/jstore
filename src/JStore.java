@@ -1,12 +1,6 @@
 import javax.xml.crypto.Data;
 import java.util.*;
-/**
- * Class JStore
- * Merupakan aplikasi utama JStore
- * @author Achmad Fathur Rizki
- * @version 05/03/2019
- * @since 2019
- */
+
 public class JStore {
     public JStore() {
 
