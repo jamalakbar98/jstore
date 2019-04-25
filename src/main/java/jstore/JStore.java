@@ -5,10 +5,10 @@ import javax.xml.crypto.Data;
 import java.util.*;
 import java.text.SimpleDateFormat;
 /**
- * Kelas Jstore untuk menjalankan program
+ * Write a description of class Invoice here.
  *
- * @author (Goldy Tanjung Wijaya)
- * @version (7.0, 18 April 2019)
+ * @author (name)
+ * @version (version)
  */
 @SpringBootApplication
 public class JStore
@@ -25,11 +25,31 @@ public class JStore
     }
     public static void main(String[] args) {
         SpringApplication.run(JStore.class, args);
+        Location lokasi = new Location("JawaBarat","Dekat Polsek","Depok");
+        try {
+            DatabaseSupplier.addSupplier(new Supplier("jamal","jamal@gmail.com","989877876",lokasi));
+            DatabaseSupplier.addSupplier(new Supplier("udin","udin@gmail.com","989009076",lokasi));
+            DatabaseSupplier.addSupplier(new Supplier("akbar","akbar@gmail.com","098989886",lokasi));
+            //DatabaseSupplier.addSupplier(new Supplier("suso","susoh@gmail.com","098989886",lokasi));
 
+        }
+        catch (SupplierAlreadyExistsException e) {
+            System.out.println("========Supplier Already Exists ============");
+            System.out.println(e.getExMessage());
+        }
 
+        try {
+            DatabaseItem.addItem(new Item("Smartphone",100000,ItemCategory.Electronics,DatabaseSupplier.getSupplier(1),ItemStatus.New));
+            DatabaseItem.addItem(new Item("Laptop",200000,ItemCategory.Electronics,DatabaseSupplier.getSupplier(2),ItemStatus.New));
+            DatabaseItem.addItem(new Item("Desktop_PC",300000,ItemCategory.Electronics,DatabaseSupplier.getSupplier(3),ItemStatus.New));
+            DatabaseItem.addItem(new Item("Accessories",400000,ItemCategory.Electronics,DatabaseSupplier.getSupplier(4),ItemStatus.New));
 
+        }catch (ItemAlreadyExistsException e) {
+            System.out.println("========Item Already Exists ============");
+            System.out.println(e.getExMessage());
+        }
 
-        /*Location lokasi = new Location("Jakarta","Kelapa Gading","Jakarta Utara");
+        /*Location lokasi = new Location("JawaBarat","Dekat Polsek","Depok");
 
         try {
             DatabaseSupplier.addSupplier(new Supplier("burhan","burhan@gmail.com","989877876",lokasi));

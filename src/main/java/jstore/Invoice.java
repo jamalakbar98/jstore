@@ -2,10 +2,10 @@ package jstore;
 import java.util.*;
 import java.util.Calendar;
 /**
- * Kelas Invoice
+ * Write a description of class Invoice here.
  *
- * @author (Goldy Tanjung Wijaya)
- * @version (7.0, 18 April 2019)
+ * @author (name)
+ * @version (version)
  */
 
 public abstract class Invoice

@@ -2,10 +2,10 @@ package jstore;
 import java.util.ArrayList;
 
 /**
- * Sub kelas Buy paid
+ * Write a description of class Invoice here.
  *
- * @author (Goldy Tanjung Wijaya)
- * @version (7.0, 18 April 2019)
+ * @author (name)
+ * @version (version)
  */
 public class Buy_Paid extends Invoice
 {

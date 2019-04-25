@@ -3,8 +3,8 @@ import java.util.*;
 /**
  * Write a description of class Invoice here.
  *
- * @author (Goldy Tanjung Wijaya)
- * @version (7.0, 18 April 2019)
+ * @author (name)
+ * @version (version)
  */
 public class DatabaseItem
 {

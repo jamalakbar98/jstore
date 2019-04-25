@@ -1,9 +1,9 @@
 package jstore;
 /**
- * Write a description of class Location here.
+ * Write a description of class Invoice here.
  *
- * @author (Goldy Tanjung Wijaya)
- * @version (2.0 28 Februari 2019)
+ * @author (name)
+ * @version (version)
  */
 public class Location
 {

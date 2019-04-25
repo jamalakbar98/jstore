@@ -1,9 +1,9 @@
 package jstore;
 /**
- * Write a description of class Item here.
+ * Write a description of class Invoice here.
  *
- * @author (Goldy Tanjung Wijaya)
- * @version (2.0)
+ * @author (name)
+ * @version (version)
  */
 
 public enum InvoiceStatus{
