@@ -1,97 +1,92 @@
 package jstore;
 /**
- * Write a description of class Invoice here.
- *
- * @author (name)
- * @version (version)
+ * Ini adalah kelas Location. Kelas ini digunakan untuk mendata
+ * lokasi yang ada supplier dan hal-hal yang bersangkutan
+ * dengannya.
+ * @author ()
+ * @version ()
  */
 public class Location
 {
-     //inisialisasi variable
-    private String province, description, city;
+    // instance variables - replace the example below with your own
+    private String province;
+    private String description;
+    private String city;
 
     /**
-     * Constructor for objects of class Location
-     * @param province for provinsi
-     * @param description for deskripsi
-     * @param city for kota
+     * Konstruktor untuk objek dari kelas Supplier
      */
-    public Location(String province, String description, String city)
+    public Location(String city, String province, String description)
     {
-        this.province=province;
-        this.description=description;
-        this.city=city;
+        // initialise instance variables
+        this.city = city;
+        this.province = province;
+        this.description = description;
     }
 
-    
-
     /**
-   * This is accessor for get Province name
-   * @return province.
-   */
+     * Method getter untuk mengambil data
+     *
+     * @return    province
+     */
     public String getProvince()
     {
-        return province;
+        // put your code here
+        return this.province;
     }
 
     /**
-   * This is accessor for get description
-   * @return description.
-   */
-    public String getDescription()
-    {
-        return description;
-    }
-
-    /**
-   * This is accessor for get city name
-   * @return city.
-   */
+     * Method getter untuk mengambil data
+     *
+     * @return    city
+     */
     public String getCity()
     {
-        return city;
+        return this.city;
     }
 
-     /**
-   * This is mutator for set Province name
-   * @param province
-   * @return nothing
-   */
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    description
+     */
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    /**
+     * Method setter untuk menentukan data
+     *
+     * @param province
+     */
     public void setProvince(String province)
     {
-        this.province=province;
+        this.province = province;
     }
 
     /**
-   * This is mutator for set description
-   * @param description
-   * @return nothing
-   */
-    public void setDescription(String description)
-    {   
-        this.description=description;
-    }
-
-    /**
-   * This is mutator for set city name
-   * @param city
-   * @return nothing
-   */
+     * Method setter untuk menentukan data
+     *
+     * @param city
+     */
     public void setCity(String city)
     {
-        this.city=city;
+        this.city = city;
     }
 
-    //this is for printing province data
-    // public void printData()
-    // {
-    //     System.out.println("===================LOCATION===================");
-    //     System.out.println("Province: "+province);
-    //     System.out.println("City: "+city);
-    //     System.out.println("Description: "+description);
-    // }
-    public String toString(){
-      return "================LOCATION==========\nProvince: "+province+"\nCity: "+city+"\nDescription: "+description;
+    /**
+     * Method setter untuk menentukan data
+     *
+     * @param description
+     */
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
+    public String toString()
+    {
+        return "Province: " +province+ "\nCity: " +city+ "\nDescription: " +description;
+    }
 }

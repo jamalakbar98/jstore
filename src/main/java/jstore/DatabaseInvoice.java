@@ -1,101 +1,84 @@
 package jstore;
+/**
+ * Write a description of class DatabaseInvoice here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
 import java.util.ArrayList;
 
-/**
- * Write a description of class Invoice here.
- *
- * @author (name)
- * @version (version)
- */
 public class DatabaseInvoice
 {
-    //inisalisasi variable
-    private static ArrayList<Invoice> invoice_database = new ArrayList<Invoice>();
-    private static int last_invoice_id=0;
+    // instance variables - replace the example below with your own
+    private static final ArrayList<Invoice> INVOICE_DATABASE=new ArrayList<>();
+    private static int LAST_INVOICE_ID=0;
 
     /**
-     * This is accessor for get invoice database
-     * @return invoice database
+     * An example of a method - replace this comment with your own
+     *
+     * @return    the sum of x and y
      */
-    public static ArrayList<Invoice> getInvoiceDatabase(){
-        return invoice_database;
+    public static ArrayList<Invoice> getInvoiceDatabase()
+    {
+        return INVOICE_DATABASE;
     }
 
-    /**
-     * This is accessor for get last invoice ID
-     * @return last_invoice_id.
-     */
-    public static int getLastInvoiceID(){
-        return last_invoice_id;
+    public static int getLastInvoiceId()
+    {
+        return LAST_INVOICE_ID;
     }
 
-    /**
-     * This is method for adding invoice to database
-     * @param invoice Invoice
-     * @return boolean
-     */
-    public static boolean addInvoice(Invoice invoice) throws InvoiceAlreadyExistsException{
-        for (Invoice inv1: invoice_database){
-            if (inv1.getItem()==invoice.getItem() &&
-                inv1.getCustomer() == invoice.getCustomer()) {
-                throw new InvoiceAlreadyExistsException(invoice);
+    public static boolean addInvoice(Invoice invoice) throws InvoiceAlreadyExistsException
+    {
+        // put your code here
+        for (Invoice invoice1: INVOICE_DATABASE) {
+            if ((invoice.getItem().equals(invoice1.getItem()))) {
+                throw new InvoiceAlreadyExistsException(invoice1);
             }
         }
-        if (invoice_database.add(invoice)){
-            last_invoice_id++;
-        }
+        INVOICE_DATABASE.add(invoice);
+        LAST_INVOICE_ID = invoice.getId();
         return true;
     }
 
-    /**
-     * This is method for remove invoice from database
-     * @param id int
-     * @return boolean
-     */
-    public static Boolean removeInvoice(int id) throws InvoiceNotFoundException
+    public static Invoice getInvoice(int id)
     {
-        for (Invoice invoice : invoice_database) {
-            if (invoice.getId() == id && invoice.getIsActive()==true) {
-                invoice.setIsActive(false);
-                invoice_database.remove(invoice);
+        for (Invoice invoice : INVOICE_DATABASE) {
+            if (id == invoice.getId()) {
+                return invoice;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<Invoice> getActiveOrder(Customer customer) throws CustomerDoesntHaveActiveException
+    {
+        ArrayList<Invoice> temp = new ArrayList<>();
+        for (Invoice invoice : INVOICE_DATABASE) {
+            if (customer.getId()==invoice.getCustomer().getId() && invoice.getIsActive() && (invoice.getInvoiceStatus().equals(InvoiceStatus.Unpaid)||invoice.getInvoiceStatus().equals(InvoiceStatus.Installment)) ) {
+                temp.add(invoice);
+            }
+        }
+        if(temp.size()>0){
+            return temp;
+        }
+        else{
+            throw new CustomerDoesntHaveActiveException(customer);
+        }
+    }
+
+    public static boolean removeInvoice(int id) throws InvoiceNotFoundException
+    {
+        for(Invoice invoice : INVOICE_DATABASE) {
+            if (id == invoice.getId()) {
+                if (invoice.getIsActive()) {
+                    invoice.setIsActive(false);
+                    invoice.toString();
+                }
+                INVOICE_DATABASE.remove(invoice);
                 return true;
             }
         }
         throw new InvoiceNotFoundException(id);
     }
-
-    /**
-     * This is accessor for getting invoice
-     * @param id integer
-     * @return invoice
-     */
-    public static Invoice getInvoice(int id){
-        Invoice hasil=null;
-        for (Invoice invoice : invoice_database){
-            if (invoice.getId() == id){
-                hasil=invoice;
-            }
-        }
-        return hasil;
-    }
-
-    /**
-     * This is accessor for get active order consumer's invoice
-     * @param customer Customer
-     * @return invoice
-     */
-    public static ArrayList<Invoice> getActiveOrderCustomer(Customer customer)
-    throws CustomerDoesntHaveActiveInvoiceException{
-        ArrayList<Invoice> res = new ArrayList<>();
-        for (Invoice invoice : invoice_database ) {
-            if (invoice.getInvoiceType()==InvoiceType.Sell &&
-                    (invoice.getInvoiceStatus()==InvoiceStatus.INSTALLMENT ||
-                            invoice.getInvoiceStatus()==InvoiceStatus.PAID)
-                    &&invoice.getIsActive()==true) {
-                res.add(invoice);
-            }
-        }
-        throw new CustomerDoesntHaveActiveInvoiceException(customer);
-    }
-
 }

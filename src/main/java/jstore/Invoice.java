@@ -1,195 +1,141 @@
 package jstore;
-import java.util.*;
-import java.util.Calendar;
 /**
- * Write a description of class Invoice here.
- *
- * @author (name)
- * @version (version)
+ * Ini adalah kelas Invoice. Kelas ini digunakan untuk
+ * membuat invoice.
+ * @author ()
+ * @version ()
  */
+import java.util.Calendar;
+import java.util.ArrayList;
 
 public abstract class Invoice
 {
-   //inisialisasi variable
-    private int id, totalItem, totalPrice;
-    private ArrayList<Integer> item;
-    private InvoiceStatus status;
-    private InvoiceType type;
-    private Calendar date = Calendar.getInstance();
+    // instance variables - replace the example below with your own
+    private int id;
+    protected ArrayList<Integer> item;
+    private Calendar date;
+    protected int totalPrice;
     private boolean isActive;
     private Customer customer;
 
-   /**
-     * Constructor for objects of class Invoice
-
+    /**
+     * Konstruktor untuk objek dari kelas Invoice
      */
-   public Invoice()
-   {
-      ArrayList<Integer> item = new ArrayList<Integer>();
-   }
-
-   public Invoice(ArrayList<Integer> item)
+    public Invoice(ArrayList<Integer> item)
     {
         // initialise instance variables
         this.item=item;
-        this.id=id;
-        int total = 0;
-//        for (Integer i: item) {
-//            total += DatabaseItem.getItemFromID(i).getPrice();
-//        }
-        //setTotalPrice(total);
-        setId(DatabaseInvoice.getLastInvoiceID()+1);
+        int size=item.size();
+        this.id=DatabaseInvoice.getLastInvoiceId()+1;
+        this.setDate(Calendar.getInstance());
+        this.date=getDate();
+        //setTotalPrice(item.getPrice()*totalItem);
     }
 
     /**
-   * This is accessor for get id
-   * @return id
-   */
+     * Method getter untuk mengambil data
+     *
+     * @return    id
+     */
     public int getId()
     {
-        // initialise instance variables
-        return id; 
+        // put your code here
+        return id;
     }
 
-     /**
-   * This is accessor for get date
-   * @return date
-   */
-     public Calendar getDate()
-    {
-        // initialise instance variables
-      // date=Calendar.getInstance();
-      // System.out.printf("%1$td %1$tB %1$tY\n",date);
-      return date;
-    }
-
-     /**
-   * This is accessor for get item
-   * @return item
-   */
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    item
+     */
     public ArrayList<Integer> getItem()
     {
-        // initialise instance variables
         return item;
     }
 
-     /**
-   * This is accessor for get totalPrice
-   * @return totalPrice
-   */
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    date
+     */
+    public Calendar getDate()
+    {
+        return date;
+    }
+
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    totalPrice
+     */
     public int getTotalPrice()
     {
-        // initialise instance variables
-        return totalPrice; 
+        return totalPrice;
     }
-     /**
-   * This is accessor for get totalItem
-   * @return totalItem
-   */
-    public int getTotalItem()
-    {
-        // initialise instance variables
-        return totalItem; 
-    }
-     /**
-   * This is accessor for get invoice status
-   * @return status
-   */
+
     public abstract InvoiceStatus getInvoiceStatus();
 
     public abstract InvoiceType getInvoiceType();
 
-  /**
-   * This is accessor for get item
-   * @return item
-   */
     public boolean getIsActive()
     {
-        // initialise instance variables
-        return isActive; 
-    }
-     public Customer getCustomer()
-    {
-        // initialise instance variables
-        return customer; 
+        return isActive;
     }
 
-     /**
-   * This is mutator for set id
-   * @param id
-   */
+    public Customer getCustomer()
+    {
+        return customer;
+    }
+
+    /**
+     * Method setter untuk menentukan data
+     *
+     * @param id
+     */
     public void setId(int id)
     {
-        // initialise instance variables
-             this.id=id;
+        this.id = id;
     }
 
     /**
-   * This is mutator for set item
-   * @param item
-   */
+     * Method setter untuk menentukan data
+     *
+     * @param item
+     */
     public void setItem(ArrayList<Integer> item)
     {
-        // initialise instance variables
-        this.item=item;
-
+        this.item = item;
     }
 
     /**
-   * This is mutator for set date
-   * @param date
-   */
-     public void setDate(Calendar date)
+     * Method setter untuk menentukan data
+     *
+     * @param date
+     */
+    public void setDate(Calendar date)
     {
-        // initialise instance variables
-        this.date=date;
+        this.date = date;
     }
 
     /**
-   * This is mutator for set totalPrice
-   * @param totalPrice
-   */
+     * Method setter untuk menentukan data
+     *
+     * @param totalPrice
+     */
     public void setTotalPrice(int totalPrice)
     {
-        for(Integer invoice:item)
-        {
-           this.totalPrice=this.totalPrice+DatabaseItem.getItemFromID(invoice).getPrice();
-        }
+        this.totalPrice = totalPrice;
     }
 
-    /**
-   * This is mutator for set totalPrice
-   * @param totalItem
-   */
-    public void setTotalItem(int totalItem)
+//    public void setInvoiceStatus(InvoiceStatus status)
+//    {
+//        this.status = status;
+//    }
+
+    public void setIsActive(boolean active)
     {
-        // initialise instance variables
-        this.totalItem=totalItem;
+        isActive = active;
     }
 
-
-    /**
-   * This is mutator for set Invoice status
-   * @param status
-   */
-    public void setInvoiceStatus(InvoiceStatus status)
-    {
-        // initialise instance variables
-        this.status=status;
-    }
-
-    /**
-   * This is mutator for set whether invoice is from active user
-   * @param isActive boolean
-   */
-    public void setIsActive(Boolean isActive)
-    {
-        // initialise instance variables
-        this.isActive=isActive;
-    }
-
-
-    //this is for printing, but the printing job done in subclass
     public abstract String toString();
-   
 }

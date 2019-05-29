@@ -1,153 +1,135 @@
 package jstore;
 /**
- * Write a description of class Invoice here.
- *
- * @author (name)
- * @version (version)
+ * Ini adalah kelas Supplier. Kelas ini digunakan untuk mendata
+ * supplier dan hal-hal yang bersangkutan dengannya.
+ * @author (Muhammad Haqy Aunoora)
+ * @version (28 Februari 2019)
  */
 public class Supplier
 {
-    //inisialisasi variable
-    private int id=0;
-    private String name,email,phoneNumber;
+    // instance variables - replace the example below with your own
+    private int id;
+    private String name;
+    private String email;
+    private String phoneNumber;
     private Location location;
 
     /**
-     * Constructor for objects of class Supplier
-     * @param name for nama supplier
-     * @param email for email supplier
-     * @param phoneNumber for nomor phone supplier
-     * @param location for link to class location
+     * Konstruktor untuk objek dari kelas Supplier
      */
-
     public Supplier(String name, String email, String phoneNumber, Location location)
     {
-        //this.id=id;
+        // initialise instance variables
+        this.id=DatabaseSupplier.getLastSupplierID()+1;
         this.name=name;
         this.email=email;
-        this.location=location;
         this.phoneNumber=phoneNumber;
-        setId(DatabaseSupplier.getLastSupplierID()+1);
+        this.location=location;
     }
 
-     /**
-   * This is accessor for get id
-   * @return id
-   */
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    id
+     */
     public int getId()
     {
-        // initialise instance variables
+        // put your code here
         return id;
     }
 
-     /**
-   * This is accessor for get name
-   * @return name
-   */
-    public  String getName()
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    name
+     */
+    public String getName()
     {
-        // initialise instance variables
         return name;
     }
 
-     /**
-   * This is accessor for get email
-   * @return email
-   */
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    email
+     */
     public String getEmail()
     {
-        // initialise instance variables
         return email;
     }
 
-     /**
-   * This is accessor for get phone number
-   * @return phoneNumber
-   */
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    phoneNumber
+     */
     public String getPhoneNumber()
     {
-        // initialise instance variables
         return phoneNumber;
     }
 
-     /**
-   * This is accessor for get location of supplier
-   * @return location
-   */
+    /**
+     * Method getter untuk mengambil data
+     *
+     * @return    location
+     */
     public Location getLocation()
     {
-        // initialise instance variables
         return location;
     }
 
-     /**
-   * This is mutator for set supplier's id
-   * @param id
-   * @return nothing
-   */
-     public void setId(int id)
+    /**
+     * Method setter untuk menentukan data
+     *
+     * @param id
+     */
+    public void setId(int id)
     {
-        this.id=id;
-
+        this.id = id;
     }
 
-     /**
-   * This is mutator for set supplier's name
-   * @param name
-   * @return nothing
-   */
+    /**
+     * Method setter untuk menentukan data
+     *
+     * @param name
+     */
     public void setName(String name)
     {
-        this.name=name;
-        
+        this.name = name;
     }
 
     /**
-   * This is mutator for set supplier's email
-   * @param email
-   * @return nothing
-   */
+     * Method setter untuk menentukan data
+     *
+     * @param email
+     */
     public void setEmail(String email)
     {
-        this.email=email;
-        
+        this.email = email;
     }
 
     /**
-   * This is mutator for set supplier's phone number
-   * @param phoneNumber
-   * @return nothing
-   */
+     * Method setter untuk menentukan data
+     *
+     * @param phoneNumber
+     */
     public void setPhoneNumber(String phoneNumber)
     {
-        this.phoneNumber=phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
-/**
-   * This is mutator for set supplier's location
-   * @param location
-   * @return nothing
-   */
+    /**
+     * Method setter untuk menentukan data
+     *
+     * @param location
+     */
     public void setLocation(Location location)
     {
-        this.location=location;
+        this.location = location;
     }
 
-    //this is for printing data
-    // public void printData()
-    // {
-    //     System.out.println("===================Supplier===================");
-    //     System.out.println("ID: "+id);
-    //     System.out.println("Name: "+name);
-    //     System.out.println("Email: "+email);
-    //     System.out.println("Nomor Telefon: "+phoneNumber);
-    //     System.out.println("Location: "+location);
-    // }
-
-    public String toString(){
-      return "===================Supplier===================\nID: "+getId()    +
-              "\nName: "+name+"\nEmail: "+email+"\nNomor Telefon: "+phoneNumber+
-              "\nLocation: "+location.getCity();
+    public String toString()
+    {
+        return "=============SUPPLIER=============="+"\nID: " +id+ "\nName: " +name+ "\nEmail: " +email+ "\nPhone Number: " +phoneNumber+ "\nLocation: "+location.getCity();
     }
-
 }

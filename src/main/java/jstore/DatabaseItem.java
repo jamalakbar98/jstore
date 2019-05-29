@@ -1,100 +1,131 @@
 package jstore;
-import java.util.*;
 /**
- * Write a description of class Invoice here.
- *
- * @author (name)
- * @version (version)
+ * Ini adalah kelas DatabaseItem. Kelas ini digunakan untuk
+ * database kelas Item.
+ * @author ()
+ * @version ()
  */
+import java.util.ArrayList;
+
 public class DatabaseItem
 {
-    //inisialisasi variable
-    private static ArrayList<Item> item_database = new ArrayList<Item>();
-    private static int last_item_id=0;
+    // instance variables - replace the example below with your own
+    private final static ArrayList<Item> ITEM_DATABASE=new ArrayList<>();
+    private static int LAST_ITEM_ID=0;
 
-    public static ArrayList<Item> getItemDatabase(){
-        return item_database;
-    }
-    public static int getLastItemID(){
-        return last_item_id;
+    /**
+     * Method untuk menambah data item
+     *
+     * @return    true
+     */
+    public static ArrayList<Item> getItemDatabase()
+    {
+        return ITEM_DATABASE;
     }
 
-/**
-   * This method is used to insert new item to database
-   * @param item this is the only parameter
-   */
-    public static boolean addItem(Item item)
-        throws ItemAlreadyExistsException {
-        boolean tmbh = false;
-        for (Item item1 : item_database) {
-            if (item1.getName() == item.getName() &&
-                    item1.getCategory() == item.getCategory() &&
-                    item1.getStatus() == item.getStatus() &&
-                    item1.getSupplier() == item.getSupplier()) {
-                throw new ItemAlreadyExistsException(item);
+    public static int getLastItemID()
+    {
+        return LAST_ITEM_ID;
+    }
+
+    public static boolean addItem(Item item) throws ItemAlreadyExistsException
+    {
+        // put your code here
+        boolean success = true;
+        for(Item object : ITEM_DATABASE)
+        {
+            if(object.getName().equals(item.getName()) && object.getStatus().equals(item.getStatus()) && object.getSupplier().equals(item.getSupplier()) && object.getCategory().equals(item.getCategory()))
+            {
+                throw new ItemAlreadyExistsException(object);
+            }
+            else
+            {
+                success = true;
             }
         }
-        if (item_database.add(item)) {
-            last_item_id++;
-            tmbh=true;
+        if (success)
+        {
+            ITEM_DATABASE.add(item);
+            LAST_ITEM_ID = item.getId();
         }
-        return tmbh;
+        return success;
     }
 
-     /**
-   * This is accessor for get item
-   * @return item.
-   */
     public static Item getItemFromID(int id)
     {
-       Item hasil=null;
-       for (Item item2 : item_database){
-           if (item2.getId()==id){
-               hasil=item2;
-           }
-       }
-        return hasil;
-    }
-     public static ArrayList<Item> getItemFromSupplier(Supplier supplier)
-    {
-        ArrayList<Item> hasil2 = null;
-        for (Item item3 : item_database){
-            if (item3.getSupplier()==supplier){
-                hasil2.add(item3);
+        Item value = null;
+        for(Item object : ITEM_DATABASE)
+        {
+            if(object.getId() == id)
+            {
+                value = object;
+                break;
             }
         }
-        return hasil2;
+        return value;
     }
-    public static ArrayList<Item> getItemFromCategory(Item category)
+
+    public static ArrayList<Item> getItemFromSupplier(Supplier supplier)
     {
-        ArrayList<Item> hasil2 = null;
-        for (Item item3 : item_database){
-            if (item3.getCategory()==category.getCategory()){
-                hasil2.add(item3);
+        ArrayList<Item> value = new ArrayList<>();
+        for(Item object : ITEM_DATABASE)
+        {
+            if(object.getSupplier() == supplier)
+            {
+                value.add(object);
+                break;
             }
         }
-        return hasil2;
+        return value;
     }
-    public static ArrayList<Item> getItemFromStatus(Item status)
+
+    public static ArrayList<Item> getItemFromCategory(ItemCategory category)
     {
-        ArrayList<Item> hasil2 = null;
-        for (Item item3 : item_database){
-            if (item3.getStatus()==status.getStatus()){
-                hasil2.add(item3);
+        ArrayList<Item> value = new ArrayList<>();
+        for(Item object : ITEM_DATABASE)
+        {
+            if(object.getCategory() == category)
+            {
+                value.add(object);
+                break;
             }
         }
-        return hasil2;
+        return value;
     }
+
+    public static ArrayList<Item> getItemFromStatus(ItemStatus status)
+    {
+        ArrayList<Item> value = new ArrayList<>();
+        for(Item object : ITEM_DATABASE)
+        {
+            if(object.getStatus() == status)
+            {
+                value.add(object);
+                break;
+            }
+        }
+        return value;
+    }
+
     /**
-   * This method is used to remove item to database
-   * @param id this is the only parameter
-   */
+     * Method untuk menghapus data item
+     *
+     * @return    true
+     */
     public static boolean removeItem(int id) throws ItemNotFoundException
     {
-        for (Item item1 : item_database) {
-            if (item1.getId() == id ) {
-                item_database.remove(id);
-                return true;
+        Item value = null;
+        int index;
+        boolean success = false;
+        for(Item object : ITEM_DATABASE)
+        {
+            if(object.getId() == id)
+            {
+                value = object;
+                index = ITEM_DATABASE.indexOf(value);
+                ITEM_DATABASE.remove(index);
+                success = true;
+                break;
             }
         }
         throw new ItemNotFoundException(id);

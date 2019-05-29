@@ -4,7 +4,7 @@ public class SupplierAlreadyExistsException extends Exception{
 
     public SupplierAlreadyExistsException(Supplier supplier_input){
         super("Supplier Email: ");
-        supplier_error=supplier_input;
+        supplier_error = supplier_input;
     }
 
     public String getExMessage(){

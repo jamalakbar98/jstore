@@ -1,25 +1,22 @@
 package jstore;
 /**
- * Write a description of class Invoice here.
+ * Enumeration class InvoiceStatus - write a description of the enum class here
  *
- * @author (name)
- * @version (version)
+ * @author (your name here)
+ * @version (version number or date here)
  */
+public enum InvoiceStatus
+{
+    Paid("Paid"), Unpaid("Unpaid"), Installment("Installment");
 
-public enum InvoiceStatus{
-  PAID("PAID"), 
-  UNPAID("UNPAID"), 
-  INSTALLMENT("INSTALLMENT");
+    private String strInvoiceStatus;
 
-    private String toString;
-    
-    InvoiceStatus(String toString) {
-        this.toString=toString;
-    }
-     public String toString()
+    private InvoiceStatus(String strInvoiceStatus)
     {
-        // initialise instance variables
-        return toString;
+        this.strInvoiceStatus=strInvoiceStatus;
+    }
+
+    public String toString(){
+        return strInvoiceStatus;
     }
 }
-

@@ -1,53 +1,60 @@
 package jstore;
-import java.util.ArrayList;
-
 /**
- * Write a description of class Invoice here.
+ * Write a description of class Buy_Paid here.
  *
- * @author (name)
- * @version (version)
+ * @author (your name)
+ * @version (a version number or a date)
  */
+import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+
 public class Buy_Paid extends Invoice
 {
-    private boolean isActive;
-    private static final InvoiceType INVOICE_TYPE= InvoiceType.Buy;
-    private static final InvoiceStatus INVOICE_STATUS= InvoiceStatus.PAID;
+    // instance variables - replace the example below with your own
+    private static InvoiceType INVOICE_TYPE=InvoiceType.Buy;
+    private static InvoiceStatus INVOICE_STATUS=InvoiceStatus.Paid;
+    private boolean isActive = false;
+
     /**
      * Constructor for objects of class Buy_Paid
      */
-  public Buy_Paid(ArrayList<Integer> item)
+    public Buy_Paid(ArrayList<Integer> item)
     {
+        // initialise instance variables
         super(item);
-        this.isActive=false;
     }
 
-
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @return    the sum of x and y
+     */
     public InvoiceStatus getInvoiceStatus()
     {
+        // put your code here
         return INVOICE_STATUS;
     }
+
     public InvoiceType getInvoiceType()
     {
         return INVOICE_TYPE;
     }
-    // public void printData(){
-    //     System.out.println("===================Invoice===================");
-    //     System.out.println("ID: "+super.getId());
-    //     System.out.println("Date: "+super.getDate());
-    //     System.out.println("Item: "+super.getItem().getName());
-    //     System.out.println("Invoice Status: "+getInvoiceStatus());
-    //     System.out.println("Invoice Type: "+getInvoiceType());
-    //     System.out.println("Total Item: "+super.getTotalItem());
-    //     System.out.println("Total Price: "+super.getTotalPrice());
-    // }
-    public String toString(){
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd MMM yyyy");
-        String diprint = "===== Buy Paid =====";
-        diprint += "\n" + "ID: " + this.getId();
-        diprint += "\n" + "Buy Date: " + sdf.format(getDate().getTime());
-        diprint += "\n" + "Price Total: " + this.getTotalPrice();
-        diprint += "\n" + "Status: " + this.getInvoiceStatus();
-        diprint += "\n" + "Buy Success" + "\n";
-        return diprint;
+
+    public String toString()
+    {
+        StringBuilder total = new StringBuilder();
+        total.append("===============INVOICE===============\n");
+        for(int i : item){
+            Item temp = DatabaseItem.getItemFromID(i);
+            String stringTemp = null;
+            if (temp != null) {
+                stringTemp = temp.toString();
+                total.append(stringTemp);
+            }
+            total.append("\n");
+        }
+        int price = this.getTotalPrice();
+        total.append("\nTotal price = ").append(price);
+        return total.toString();
     }
 }

@@ -1,26 +1,22 @@
 package jstore;
 /**
- * Write a description of class Invoice here.
+ * Enumeration class ItemCategory - write a description of the enum class here
  *
- * @author (name)
- * @version (version)
+ * @author (your name here)
+ * @version (version number or date here)
  */
+public enum ItemCategory
+{
+    Electronics("Electronics"), Furniture("Furniture"), Stationery("Stationery");
 
-public enum ItemCategory{
-  Electronics("Electronics"),
-  Furniture("Furniture"),
-  Stationery("Stationery");
+    private String strItemCategory;
 
-  private String toString;
-    
-    ItemCategory(String toString) {
-        this.toString=toString;
-    }
-     public String toString()
+    private ItemCategory(String strItemCategory)
     {
-        // initialise instance variables
-        return toString;
+        this.strItemCategory=strItemCategory;
+    }
+
+    public String toString(){
+        return strItemCategory;
     }
 }
- 
-    
